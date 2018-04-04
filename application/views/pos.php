@@ -1083,7 +1083,7 @@ function showticket(){
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ticket"><?=label("Receipt");?></h4>
       </div>
-      <div class="modal-body" id="modal-body">
+      <div class="modal-body" id="modal-body" style="padding: 0;">
          <div id="printSection">
             <!-- Ticket goes here -->
             <center><h1 style="color:#34495E"><?=label("empty");?></h1></center>
