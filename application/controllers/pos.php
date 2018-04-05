@@ -573,7 +573,7 @@ class Pos extends CI_Controller
               $name = substr($posale->name,25);
             }*/
             
-            $ticket .= $name.'<div style="margin-top: 5px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700;">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '')*/ $posale->price.  '</span></div>';
+            $ticket .= $name.'<div style="margin-top: 7px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700;">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '')*/ $posale->price.  '</span></div>';
             $i ++;
         }
 
