@@ -573,7 +573,7 @@ class Pos extends CI_Controller
               $name = substr($posale->name,25);
             }*/
             
-            $ticket .= $name.'<div style="margin-top: 0px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700;">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '')*/ $posale->price.  '</span></div>';
+            $ticket .= $name.'<div style="margin-top: 5px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700;">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '')*/ $posale->price.  '</span></div>';
             $i ++;
         }
 
@@ -585,7 +585,7 @@ class Pos extends CI_Controller
             $ticket .= '<tr><td style="text-align:left; padding-left:1.5%;"></td><td style="text-align:right;font-weight:bold;"></td><td style="text-align:left;">' . label("Discount") . '</td><td style="text-align:right; padding-right:1.5%;font-weight:bold;">' . $sale->discount . '</td></tr>';
         if (intval($sale->tax))
             $ticket .= '<tr><td style="text-align:left;"></td><td style="text-align:right; padding-right:1.5%;font-weight:bold;"></td><td style="text-align:left; padding-left:1.5%;">' . label("tax") . '</td><td style="text-align:right;font-weight:bold;">' . $sale->tax . '</td></tr>';*/
-        $ticket .= '<div style="margin-left: 270px; font-size: 14px; font-weight: 700;">' . number_format((float)$sale->total, $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</div>';
+        $ticket .= '<div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . number_format((float)$sale->total, $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</div>';
 
         /*$PayMethode = explode('~', $sale->paidmethod);
 
