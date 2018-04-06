@@ -537,7 +537,10 @@ class Pos extends CI_Controller
         }
 
 
-        //Print bill  
+          
+          if ($sale->typedoc == 'factura') {
+             //IMPRIMIR FACTURA
+
         /*$ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div> <div style="clear:both;"><h4 class="text-center">' . label("SaleNum") . '.: ' . sprintf("%05d", $sale->typedoc == 'recibo'? $sale->id : $sale->numdoc) . '</h4> <div style="clear:both;"></div><span class="float-left">' . label("Date") . ': ' . $sale->created_at->format('d-m-Y H:i:s') . '</span><br><div style="clear:both;"><span class="float-left">' . label("Customer") . ': ' . $sale->clientname . '</span><div style="clear:both;"><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';*/
         //$sale->created_at->format('d-m-Y H:i:s')
 
@@ -566,14 +569,25 @@ class Pos extends CI_Controller
         $i = 1;
         foreach ($posales as $posale) {
 
-            /*$posName = strlen($posale->name);
-            if ($posName <= 25) {
-              $name = $posale->name; 
-            } else {
-              $name = substr($posale->name,25);
+            /*$name = '';
+
+            $nameLength = strlen($posale->name);
+
+            $espacios = '';
+            $espacio = array();
+            if ($nameLength < 25) {
+              
+              for ($i=$nameLength; $i < 40; $i++) { 
+                $espacio[$i] = '&nbsp;';
+              }
+
+              $espacios = implode('',$espacio);
+              
             }*/
-            
-            $ticket .= $name.'<div style="margin-top: 7px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700;">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '')*/ $posale->price.  '</span></div>';
+
+            /*$ticket .= '<div style="margin-top: 7px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700; ">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') $posale->price.  '</span></div>';*/
+
+            $ticket .= '<table> <tr> <td style="width: 80px; text-align: center; font-size: 14px; font-weight: 700;">' . $posale->qt . '</td> <td style="width: 210px; font-size: 14px; font-weight: 700;">' . $posale->name . '</td> <td style="margin-left: 30px; font-size: 14px; font-weight: 700;">'.$this->setting->currency.' '.$posale->price.'</td> </tr> </table>';
             $i ++;
         }
 
@@ -585,7 +599,7 @@ class Pos extends CI_Controller
             $ticket .= '<tr><td style="text-align:left; padding-left:1.5%;"></td><td style="text-align:right;font-weight:bold;"></td><td style="text-align:left;">' . label("Discount") . '</td><td style="text-align:right; padding-right:1.5%;font-weight:bold;">' . $sale->discount . '</td></tr>';
         if (intval($sale->tax))
             $ticket .= '<tr><td style="text-align:left;"></td><td style="text-align:right; padding-right:1.5%;font-weight:bold;"></td><td style="text-align:left; padding-left:1.5%;">' . label("tax") . '</td><td style="text-align:right;font-weight:bold;">' . $sale->tax . '</td></tr>';*/
-        $ticket .= '<div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . number_format((float)$sale->total, $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</div>';
+        $ticket .= '<div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . $this->setting->currency . ' '. number_format((float)$sale->total, $this->setting->decimals, '.', '') . '</div>';
 
         /*$PayMethode = explode('~', $sale->paidmethod);
 
@@ -601,6 +615,47 @@ class Pos extends CI_Controller
         }
 
         $ticket .= '<div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left">' . $store->name . '</span><span class="float-right">' . label("Tel") . ' ' . ($store->phone ? $store->phone : $this->setting->phone) . '</span><div style="clear:both;"><center><img style="margin-top:30px" src="' . site_url('pos/GenerateBarcode/' . sprintf("%05d", $sale->id) . '/' . $bcs . '/' . $height . '/' . $width) . '" alt="' . $sale->id . '" /></center><p class="text-center" style="margin:0 auto;margin-top:10px;">' . $store->footer_text . '</p><div class="text-center" style="background-color:#000;padding:5px;width:85%;color:#fff;margin:0 auto;border-radius:3px;margin-top:20px;">' . $this->setting->receiptfooter . '</div></div>';*/
+          } else {
+
+            // IMPRIMIR RECIBO
+
+        $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div> <div style="clear:both;"><h4 class="text-center">' . label("SaleNum") . '.: ' . sprintf("%05d", $sale->typedoc == 'recibo'? $sale->id : $sale->numdoc) . '</h4> <div style="clear:both;"></div><span class="float-left">' . label("Date") . ': ' . $sale->created_at->format('d-m-Y H:i:s') . '</span><br><div style="clear:both;"><span class="float-left">' . label("Customer") . ': ' . $sale->clientname . '</span><div style="clear:both;"><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
+
+         $i = 1;
+        foreach ($posales as $posale) {
+            $ticket .= '<tr><td style="text-align:center; width:30px;">' . $i . '</td><td style="text-align:left; width:180px;">' . $posale->name . '</td><td style="text-align:center; width:50px;">' . $posale->qt . '</td><td style="text-align:right; width:70px; ">' . $this->setting->currency .' ' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') .  '</td></tr>';
+            $i ++;
+        }
+
+
+        $bcs = 'code128';
+        $height = 20;
+        $width = 3;
+        $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left;">' . label("TotalItems") . '</td><td style="text-align:right; padding-right:1.5%;">' . $sale->totalitems . '</td><td style="text-align:left; padding-left:1.5%;">' . label("Total") . '</td><td style="text-align:right;font-weight:bold;">'. $this->setting->currency .' ' . $sale->subtotal . '</td></tr>';
+        if (intval($sale->discount))
+            $ticket .= '<tr><td style="text-align:left; padding-left:1.5%;"></td><td style="text-align:right;font-weight:bold;"></td><td style="text-align:left;">' . label("Discount") . '</td><td style="text-align:right; padding-right:1.5%;font-weight:bold;">' . $sale->discount . '</td></tr>';
+        if (intval($sale->tax))
+            $ticket .= '<tr><td style="text-align:left;"></td><td style="text-align:right; padding-right:1.5%;font-weight:bold;"></td><td style="text-align:left; padding-left:1.5%;">' . label("tax") . '</td><td style="text-align:right;font-weight:bold;">' . $sale->tax . '</td></tr>';
+        $ticket .= '<div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . number_format((float)$sale->total, $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</div>';
+
+        $PayMethode = explode('~', $sale->paidmethod);
+
+        switch ($PayMethode[0]) {
+            case '1': // case Credit Card
+                $ticket .= '<td colspan="2" style="text-align:left; font-weight:bold; padding-top:5px;">' . label("CreditCard") . '</td><td colspan="2" style="padding-top:5px; text-align:right; font-weight:bold;">xxxx xxxx xxxx ' . substr($PayMethode[1], - 4) . '</td></tr><tr><td colspan="2" style="text-align:left; font-weight:bold; padding-top:5px;">' . label("CreditCardHold") . '</td><td colspan="2" style="padding-top:5px; text-align:right; font-weight:bold;">' . $PayMethode[2] . '</td></tr></tbody></table>';
+                break;
+            case '2': // case ckeck
+                $ticket .= '<td colspan="2" style="text-align:left; font-weight:bold; padding-top:5px;">' . label("ChequeNum") . '</td><td colspan="2" style="padding-top:5px; text-align:right; font-weight:bold;">' . $PayMethode[1] . '</td></tr></tbody></table>';
+                break;
+            default:
+                $ticket .= '<td colspan="2" style="text-align:left; font-weight:bold; padding-top:5px;">' . label("Paid") . '</td><td colspan="2" style="padding-top:5px; text-align:right; font-weight:bold;">' . number_format((float)$sale->paid, $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</td></tr><tr><td colspan="2" style="text-align:left; font-weight:bold; padding-top:5px;">' . label("Change") . '</td><td colspan="2" style="padding-top:5px; text-align:right; font-weight:bold;">' . number_format((float)(floatval($sale->paid) - floatval($sale->total)), $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</td></tr></tbody></table>';
+        }
+
+        /*$ticket .= '<div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left">' . $store->name . '</span><span class="float-right">' . label("Tel") . ' ' . ($store->phone ? $store->phone : $this->setting->phone) . '</span><div style="clear:both;"><center><img style="margin-top:30px" src="' . site_url('pos/GenerateBarcode/' . sprintf("%05d", $sale->id) . '/' . $bcs . '/' . $height . '/' . $width) . '" alt="' . $sale->id . '" /></center><p class="text-center" style="margin:0 auto;margin-top:10px;">' . $store->footer_text . '</p><div class="text-center" style="background-color:#000;padding:5px;width:85%;color:#fff;margin:0 auto;border-radius:3px;margin-top:20px;">' . $this->setting->receiptfooter . '</div></div>';*/
+
+          }
+          
+        
 
         Posale::delete_all(array(
             'conditions' => array(
@@ -1097,17 +1152,26 @@ class Pos extends CI_Controller
            )
       ));
 
-      $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
 
+      /*$ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
+      */
+      $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th></tr></thead><tbody>';
+
+      /*
       $i = 1;
       foreach ($posales as $posale) {
            $ticket .= '<tr><td style="text-align:center; width:30px;">' . $i . '</td><td style="text-align:left; width:180px;">' . $posale->name . '<br><span style="font-size:12px;color:#666">'.$posale->options.'</span></td><td style="text-align:center; width:50px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:14px; ">' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</td></tr>';
            $i ++;
+      }*/
+      $i = 1;
+      foreach ($posales as $posale) {
+           $ticket .= '<tr><td style="text-align:left; width:180px;">' . $posale->name . '<br><span style="font-size:12px;color:#666">'.$posale->options.'</span></td><td style="text-align:center; width:50px;">' . $posale->qt . '</td></tr>';
+           $i ++;
       }
 
-      $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left;">' . label("TotalItems") . '</td><td style="text-align:right; padding-right:1.5%;">' . $totalitems . '</td><td style="text-align:left; padding-left:1.5%;">' . label("Total") . ' ( + tax)</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';
+     /* $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left;">' . label("TotalItems") . '</td><td style="text-align:right; padding-right:1.5%;">' . $totalitems . '</td><td style="text-align:left; padding-left:1.5%;">' . label("Total") . ' ( + tax)</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';*/
 
-      $ticket .= '</tbody></table><br><br><div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left">' . $store->name . '</span><span class="float-right">' . label("Tel") . ' ' . ($store->phone ? $store->phone : $this->setting->phone) . '</span><div style="clear:both;"><p class="text-center" style="margin:0 auto;margin-top:10px;">' . $store->footer_text . '</p><div class="text-center" style="background-color:#000;padding:5px;width:85%;color:#fff;margin:0 auto;border-radius:3px;margin-top:20px;">' . $this->setting->receiptfooter . '</div></div>';
+      /*$ticket .= '</tbody></table><br><br><div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left">' . $store->name . '</span><span class="float-right">' . label("Tel") . ' ' . ($store->phone ? $store->phone : $this->setting->phone) . '</span><div style="clear:both;"><p class="text-center" style="margin:0 auto;margin-top:10px;">' . $store->footer_text . '</p><div class="text-center" style="background-color:#000;padding:5px;width:85%;color:#fff;margin:0 auto;border-radius:3px;margin-top:20px;">' . $this->setting->receiptfooter . '</div></div>';*/
 
       echo $ticket;
    }
