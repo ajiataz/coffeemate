@@ -558,7 +558,7 @@ class Pos extends CI_Controller
         $mes = $sale->created_at->format('m');
         $dia = $sale->created_at->format('d');
 
-        $ticket = '<div><div class="text-center"></div> <div style="clear:both;"><h4 class="text-center"></h4> <div style="clear:both;"></div><br><br><br><br><br><span style="margin-left: 195px; font-size: 20px; font-weight: 700;"> '.$dia.' </span><span style="margin-left: 25px; font-size: 20px; font-weight: 700;"> '.$mes.' </span><span style="margin-left: 21px; font-size: 20px; font-weight: 700;"> '.$anio.' </span><br><div style="margin-top: 2px;"><span style="margin-left: 100px; margin-top: 4px; font-size: 14px; font-weight: 700;">'. $sale->clientname . '</span><br><div style="clear:both;"><span style="margin-left: 100px; margin-top: 4px; font-size: 14px; font-weight: 700;"> '.$direccion.'</span><div style="margin-top: 5px;"><div style="clear:both;"><span style="margin-left: 230px; font-size: 14px; font-weight: 700;">'.$nit.'</span><div style="clear:both;" <br><br>';
+        $ticket = '<div><div class="text-center"></div> <div style="clear:both;"><h4 class="text-center"></h4> <div style="clear:both;"></div><br><br><br><br><br><span style="margin-left: 195px; font-size: 20px; font-weight: 700;"> '.$dia.' </span><span style="margin-left: 25px; font-size: 20px; font-weight: 700;"> '.$mes.' </span><span style="margin-left: 21px; font-size: 20px; font-weight: 700;"> '.$anio.' </span><br><div style="margin-top: 2px;"><span style="margin-left: 100px; margin-top: 4px; font-size: 14px; font-weight: 700;">'. $sale->clientname . '</span><br><div style="clear:both;"><span style="margin-left: 100px; margin-top: 4px; font-size: 14px; font-weight: 700;"> '.$direccion.'</span><div style="margin-top: 5px;"><div style="clear:both;"><span style="margin-left: 230px; font-size: 14px; font-weight: 700;">'.$nit.'</span><div style="margin-bottom: 15px;"" <br><br>';
 
          /*$i = 1;
         foreach ($posales as $posale) {
@@ -587,7 +587,7 @@ class Pos extends CI_Controller
 
             /*$ticket .= '<div style="margin-top: 7px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700; ">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') $posale->price.  '</span></div>';*/
 
-            $ticket .= '<table> <tr> <td style="width: 80px; text-align: center; font-size: 14px; font-weight: 700;">' . $posale->qt . '</td> <td style="width: 210px; font-size: 14px; font-weight: 700;">' . $posale->name . '</td> <td style="margin-left: 30px; font-size: 14px; font-weight: 700;">'.$this->setting->currency.' '.$posale->price.'</td> </tr> </table>';
+            $ticket .= '<table> <tr> <td style="width: 80px; text-align: center; font-size: 16px; font-weight: 700;">' . $posale->qt . '</td> <td style="width: 210px; font-size: 16px; font-weight: 700;">' . $posale->name . '</td> <td style="margin-left: 30px; font-size: 16px; font-weight: 700;">'.$this->setting->currency.' '.$posale->price.'</td> </tr> </table>';
             $i ++;
         }
 
