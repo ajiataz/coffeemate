@@ -658,7 +658,7 @@ class Pos extends CI_Controller
  
 
 
-        $ticket .= $tbltd.' </table> '.$fila.' <div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . $this->setting->currency . ' '. number_format((float)$sale->total, $this->setting->decimals, '.', '') . '</div>';
+        $ticket .= $tbltd.' </table> <div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . $this->setting->currency . ' '. number_format((float)$sale->total, $this->setting->decimals, '.', '') . '</div>';
 
         /*$PayMethode = explode('~', $sale->paidmethod);
 
