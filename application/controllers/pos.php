@@ -567,6 +567,7 @@ class Pos extends CI_Controller
         }*/
 
         $i = 1;
+        
         foreach ($posales as $posale) {
 
             /*$name = '';
@@ -585,10 +586,65 @@ class Pos extends CI_Controller
               
             }*/
 
+          
+
             /*$ticket .= '<div style="margin-top: 7px;""><span style="margin-left: 25px; font-size: 14px; font-weight: 700;">' . $posale->qt . '</span> <span style="margin-left: 35px; font-size: 14px; font-weight: 700; ">' . $posale->name . '</span><span style="margin-left: 30px; font-size: 14px; font-weight: 700;">' . $this->setting->currency .' ' . /*number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') $posale->price.  '</span></div>';*/
 
-            $ticket .= '<tr> <td style="width: 80px;  text-align: center; font-size: 18px; font-weight: 700;">' . $posale->qt . '</td> <td style="width: 210px; height: 25px; font-size: 18px; font-weight: 700;">' . $posale->name . '</td> <td style=" font-size: 18px; font-weight: 700;">'.$this->setting->currency.' '.$posale->price.'</td> </tr> ';
+            $ticket .= '<tr> <td style="width: 80px;  text-align: center; font-size: 18px; font-weight: 700;">' . $posale->qt . '</td> <td style="width: 210px; height: 25px; font-size: 18px; font-weight: 700;">' . $posale->name . '</td> <td style=" font-size: 18px; font-weight: 700;">'.$this->setting->currency.' '.$posale->price.'</td> </tr>';
             $i ++;
+        }
+
+        $tbltd = '';
+
+          $td9 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+          $td8 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+          $td7 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+           $td6 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+           $td5 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+           $td4 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+
+           $td3 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td2 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td1 = '<tr><td style="height: 25px;">&nbsp;</td></tr>';
+          $fila = $i -1;
+        switch ($fila) {
+          case 1:
+            $tbltd = $td9;
+            break;
+          case 2:
+            $tbltd = $td8;
+            break;
+          case 3:
+            $tbltd = $td7;
+            break;
+          case 4:
+            $tbltd = $td6;
+            break;
+          case 5:
+            $tbltd = $td5;
+            break;
+          case 6:
+            $tbltd = $td4;
+            break;
+          case 7:
+            $tbltd = $td3;
+            break;
+          case 8:
+            $tbltd = $td2;
+            break;
+          case 9:
+            $tbltd = $td1;
+            break;
+
+          
+          default:
+            $tbltd = '';
+            break;
         }
 
         $bcs = 'code128';
@@ -599,7 +655,10 @@ class Pos extends CI_Controller
             $ticket .= '<tr><td style="text-align:left; padding-left:1.5%;"></td><td style="text-align:right;font-weight:bold;"></td><td style="text-align:left;">' . label("Discount") . '</td><td style="text-align:right; padding-right:1.5%;font-weight:bold;">' . $sale->discount . '</td></tr>';
         if (intval($sale->tax))
             $ticket .= '<tr><td style="text-align:left;"></td><td style="text-align:right; padding-right:1.5%;font-weight:bold;"></td><td style="text-align:left; padding-left:1.5%;">' . label("tax") . '</td><td style="text-align:right;font-weight:bold;">' . $sale->tax . '</td></tr>';*/
-        $ticket .= ' </table> <div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . $this->setting->currency . ' '. number_format((float)$sale->total, $this->setting->decimals, '.', '') . '</div>';
+ 
+
+
+        $ticket .= $tbltd.' </table> '.$fila.' <div style="margin-left: 285px; font-size: 14px; font-weight: 700;">' . $this->setting->currency . ' '. number_format((float)$sale->total, $this->setting->decimals, '.', '') . '</div>';
 
         /*$PayMethode = explode('~', $sale->paidmethod);
 
