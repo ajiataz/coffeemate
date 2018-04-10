@@ -106,10 +106,10 @@
    <div class="modal fade" id="CashinHand" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
        <div class="modal-content">
-         <!--<div class="modal-header">
+         <div class="modal-header">
            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
            <h4 class="modal-title" id="myModalLabel"><?=label("CashinHand");?></h4>
-         </div>-->
+         </div>
          <form id="cachIH">
          <div class="modal-body">
                <div class="form-group">
@@ -1013,10 +1013,10 @@ function showticket(cuenta){
 <div class="modal fade" id="AddSale" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!--<div class="modal-header">
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="AddSale"><?=label("AddSale");?></h4>
-      </div>-->
+      </div>
       <form>
       <div class="modal-body">
             <div class="form-group">
@@ -1086,10 +1086,10 @@ function showticket(cuenta){
 <div class="modal fade" id="ticket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
  <div class="modal-dialog" role="document" id="ticketModal">
     <div class="modal-content">
-      <!--<div class="modal-header">
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ticket"><?=label("Receipt");?></h4>
-      </div>-->
+      </div>
       <div class="modal-body" id="modal-body" style="padding: 0;">
          <div id="printSection">
             <!-- Ticket goes here -->
@@ -1111,10 +1111,10 @@ function showticket(cuenta){
 <div class="modal fade" id="options" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
  <div class="modal-dialog" role="document" id="ticketModal">
     <div class="modal-content">
-      <!--<div class="modal-header">
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="ticket"><?=label("Options");?></h4>
-      </div>-->
+      </div>
       <div class="modal-body" id="modal-body">
          <div id="optionsSection">
             <!-- Ticket goes here -->
