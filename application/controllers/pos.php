@@ -1245,11 +1245,11 @@ class Pos extends CI_Controller
       }*/
       $i = 1;
       foreach ($posales as $posale) {
-           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:18px;">' . $posale->name . '<br><span style="color:#000; font-size:18px;">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:18px">' . $posale->qt . '</td></tr>';
+           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:20px;">' . $posale->name . '<br><span style="color:#000; font-size:18px;">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:18px">' . $posale->qt . '</td></tr>';
            $i ++;
       }
 
-      
+
 
      /* $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left;">' . label("TotalItems") . '</td><td style="text-align:right; padding-right:1.5%;">' . $totalitems . '</td><td style="text-align:left; padding-left:1.5%;">' . label("Total") . ' ( + tax)</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';*/
 
