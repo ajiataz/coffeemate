@@ -1245,7 +1245,7 @@ class Pos extends CI_Controller
       }*/
       $i = 1;
       foreach ($posales as $posale) {
-           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:20px;">' . $posale->name . '<br><span style="color:#000; font-size:18px;">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:18px">' . $posale->qt . '</td></tr>';
+           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:20px;">' . $posale->name . '<br><span style="color:#000; font-size:20px;">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:20px">' . $posale->qt . '</td></tr>';
            $i ++;
       }
 
