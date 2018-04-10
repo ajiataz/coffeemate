@@ -1194,7 +1194,7 @@ class Pos extends CI_Controller
       ));
    }
 
-   public function showticket($num, $subtotal, $totalitems, $waiter)
+   public function showticket($num, $subtotal, $totalitems, $waiter,$cuenta)
    {
       // $hold = Hold::find($num);
       $waiterN = $waiter > 0 ? Waiter::find($waiter)->name : label('withoutWaiter');
@@ -1212,7 +1212,28 @@ class Pos extends CI_Controller
       ));
 
 
-      /*$ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
+      
+      //::: CUENTA :::
+      if ($cuenta == 'cuenta') {
+        $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
+      
+      $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>Precio</th></tr></thead><tbody>';
+
+      
+      $i = 1;
+      foreach ($posales as $posale) {
+           $ticket .= '<tr><td style="text-align:left; width:180px;">' . $posale->name . '<br><span style="font-size:12px;color:#666">'.$posale->options.'</span></td><td style="text-align:center; width:50px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:14px; ">' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</td></tr>';
+           $i ++;
+      }
+     
+
+      $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left; font-weight:bold;">Total</td><td style="text-align:right; padding-right:1.5%;">&nbsp;</td><td style="text-align:left; padding-left:1.5%;">&nbsp;</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';
+
+      $ticket .= '</tbody></table><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">Nombre</span></div><br><br><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">NIT</span></div><br><br><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">Direccion</span></div><br><br><div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left"></div>';
+      } 
+      //::: COCINA :::
+      if ($cuenta == 'cocina') {
+        /*$ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th><em>#</em></th><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th><th>' . label("SubTotal") . '</th></tr></thead><tbody>';
       */
       $ticket = '<div class="col-md-12"><div class="text-center">' . $this->setting->receiptheader . '</div><div style="clear:both;"><br><div style="clear:both;"><div style="clear:both;"><span class="float-left">' . label("Date") . ': ' . $date . '</span><br><div style="clear:both;"><span class="float-left">' . label("Waiter") . ': ' . $waiterN . '<br> ' . label("Table") . ' :' . $tableN . '</span><div style="clear:both;"><br><br><table class="table" cellspacing="0" border="0"><thead><tr><th>' . label("Product") . '</th><th>' . label("Quantity") . '</th></tr></thead><tbody>';
 
@@ -1231,6 +1252,8 @@ class Pos extends CI_Controller
      /* $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left;">' . label("TotalItems") . '</td><td style="text-align:right; padding-right:1.5%;">' . $totalitems . '</td><td style="text-align:left; padding-left:1.5%;">' . label("Total") . ' ( + tax)</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';*/
 
       /*$ticket .= '</tbody></table><br><br><div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left">' . $store->name . '</span><span class="float-right">' . label("Tel") . ' ' . ($store->phone ? $store->phone : $this->setting->phone) . '</span><div style="clear:both;"><p class="text-center" style="margin:0 auto;margin-top:10px;">' . $store->footer_text . '</p><div class="text-center" style="background-color:#000;padding:5px;width:85%;color:#fff;margin:0 auto;border-radius:3px;margin-top:20px;">' . $this->setting->receiptfooter . '</div></div>';*/
+      }
+      
 
       echo $ticket;
    }

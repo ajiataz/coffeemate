@@ -193,10 +193,16 @@
                   <i class="fa fa-user-plus fa-stack-1x fa-inverse dark-blue"></i>
                </span>
             </a>
-            <a href="javascript:void(0)" onclick="showticket()">
+            <a href="javascript:void(0)" onclick="showticket('cocina')">
                <span class="fa-stack fa-lg" data-toggle="tooltip" data-placement="top" title="<?=label('ShowlastReceipt');?>">
                   <i class="fa fa-square fa-stack-2x grey"></i>
-                  <i class="fa fa-ticket fa-stack-1x fa-inverse dark-blue"></i>
+                  <i class="fa fa-cutlery fa-stack-1x fa-inverse dark-blue"></i>
+               </span>
+            </a>
+            <a href="javascript:void(0)" onclick="showticket('cuenta')">
+               <span class="fa-stack fa-lg" data-toggle="tooltip" data-placement="top" title="Imprimir Cuenta">
+                  <i class="fa fa-square fa-stack-2x grey"></i>
+                  <i class="fa fa-money fa-stack-1x fa-inverse dark-blue"></i>
                </span>
             </a>
          </div>
@@ -990,14 +996,15 @@ function pdfreceipt(){
 
 }
 
-function showticket(){
+function showticket(cuenta){
    var hold = $('.selectedHold').attr("id");
    var Total = $('#total').text();
    var totalItems = $('#ItemsNum span').text();
    var waiter = $('#WaiterName').val();
-   $('#printSection').load("<?php echo site_url('pos/showticket')?>/"+hold+"/"+Total+"/"+totalItems+"/"+waiter);
+   $('#printSection').load("<?php echo site_url('pos/showticket')?>/"+hold+"/"+Total+"/"+totalItems+"/"+waiter+"/"+cuenta);
    $('#ticket').modal('show');
 }
+
 
 </script>
 
