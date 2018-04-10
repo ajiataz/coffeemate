@@ -1222,12 +1222,12 @@ class Pos extends CI_Controller
       
       $i = 1;
       foreach ($posales as $posale) {
-           $ticket .= '<tr><td style="text-align:left; width:180px;">' . $posale->name . '<br><span style="font-size:12px;color:#666">'.$posale->options.'</span></td><td style="text-align:center; width:50px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:14px; ">' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . ' ' . $this->setting->currency . '</td></tr>';
+           $ticket .= '<tr><td style="text-align:left; width:180px;">' . $posale->name . '<br><span style="font-size:12px;color:#666">'.$posale->options.'</span></td><td style="text-align:center; width:50px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:14px; ">' . $this->setting->currency . ' ' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . '</td></tr>';
            $i ++;
       }
      
 
-      $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left; font-weight:bold;">Total</td><td style="text-align:right; padding-right:1.5%;">&nbsp;</td><td style="text-align:left; padding-left:1.5%;">&nbsp;</td><td style="text-align:right;font-weight:bold;">' . $subtotal . ' ' . $this->setting->currency . '</td></tr>';
+      $ticket .= '</tbody></table><table class="table" cellspacing="0" border="0" style="margin-bottom:8px;"><tbody><tr><td style="text-align:left; font-weight:bold;">Total</td><td style="text-align:right; padding-right:1.5%;">&nbsp;</td><td style="text-align:left; padding-left:1.5%;">&nbsp;</td><td style="text-align:right;font-weight:bold;">' . $this->setting->currency . ' ' . $subtotal . ' </td></tr>';
 
       $ticket .= '</tbody></table><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">Nombre</span></div><br><br><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">NIT</span></div><br><br><div style="border-bottom:1px solid #000; padding-top:5px;"><span class="float-left">Direccion</span></div><br><br><div style="border-top:1px solid #000; padding-top:10px;"><span class="float-left"></div>';
       } 
