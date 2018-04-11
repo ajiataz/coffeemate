@@ -600,17 +600,17 @@ class Pos extends CI_Controller
 
           $td8 = '<tr><td style="height: 190px;">&nbsp;</td></tr>';
 
-          $td7 = '<tr><td style="height: 170px;">&nbsp;</td></tr>';
+          $td7 = '<tr><td style="height: 175px;">&nbsp;</td></tr>';
 
-           $td6 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td6 = '<tr><td style="height: 155px;">&nbsp;</td></tr>';
 
-           $td5 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td5 = '<tr><td style="height: 130px;">&nbsp;</td></tr>';
 
-           $td4 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td4 = '<tr><td style="height: 110px;">&nbsp;</td></tr>';
 
-           $td3 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
-           $td2 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
-           $td1 = '<tr><td style="height: 25px;">&nbsp;</td></tr>';
+           $td3 = '<tr><td style="height: 90px;">&nbsp;</td></tr>';
+           $td2 = '<tr><td style="height: 70px;">&nbsp;</td></tr>';
+           $td1 = '<tr><td style="height: 50px;">&nbsp;</td></tr>';
           $fila = $i -1;
         switch ($fila) {
           case 1:
