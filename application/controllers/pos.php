@@ -597,21 +597,17 @@ class Pos extends CI_Controller
         $tbltd = '';
 
           $td9 = '<tr><td style="height: 210px;">&nbsp;</td></tr>';
-
           $td8 = '<tr><td style="height: 190px;">&nbsp;</td></tr>';
-
           $td7 = '<tr><td style="height: 160px;">&nbsp;</td></tr>';
-
            $td6 = '<tr><td style="height: 135px;">&nbsp;</td></tr>';
-
            $td5 = '<tr><td style="height: 110px;">&nbsp;</td></tr>';
-
            $td4 = '<tr><td style="height: 85px;">&nbsp;</td></tr>';
-
            $td3 = '<tr><td style="height: 60px;">&nbsp;</td></tr>';
            $td2 = '<tr><td style="height: 35px;">&nbsp;</td></tr>';
-           $td1 = '<tr><td style="height: 10px;">&nbsp;</td></tr>';
+           $td1 = '<tr><td style="height: 5px;">&nbsp;</td></tr>';
+
           $fila = $i -1;
+
         switch ($fila) {
           case 1:
             $tbltd = $td9;
