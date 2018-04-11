@@ -600,7 +600,7 @@ class Pos extends CI_Controller
 
           $td8 = '<tr><td style="height: 190px;">&nbsp;</td></tr>';
 
-          $td7 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
+          $td7 = '<tr><td style="height: 170px;">&nbsp;</td></tr>';
 
            $td6 = '<tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr><tr><td style="height: 25px;">&nbsp;</td></tr>';
 
