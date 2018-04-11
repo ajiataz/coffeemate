@@ -913,6 +913,7 @@ function saleBtn(type) {
            else if(change>0) Status = 2;
            else if(change<=0) Status = 0;
    }
+
    var taxamount = $('.TAX').val().indexOf('%') != -1 ? parseFloat($('#taxValue').text()) : $('.TAX').val();
    var discountamount = $('.Remise').val().indexOf('%') != -1 ? parseFloat($('#RemiseValue').text()) : $('.Remise').val();
 
@@ -943,6 +944,8 @@ function saleBtn(type) {
   $('#CreditCardYear').val('');
   $('#CreditCardMonth').val('');
   $('#CreditCardCODECV').val('');
+
+  //CloseTable();
 
 }
 
