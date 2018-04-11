@@ -602,7 +602,7 @@ class Pos extends CI_Controller
 
           $td7 = '<tr><td style="height: 160px;">&nbsp;</td></tr>';
 
-           $td6 = '<tr><td style="height: 130px;">&nbsp;</td></tr>';
+           $td6 = '<tr><td style="height: 135px;">&nbsp;</td></tr>';
 
            $td5 = '<tr><td style="height: 130px;">&nbsp;</td></tr>';
 
