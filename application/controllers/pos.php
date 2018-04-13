@@ -1213,7 +1213,7 @@ class Pos extends CI_Controller
       
       $i = 1;
       foreach ($posales as $posale) {
-           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:18px;">' . $posale->name . '<br><span style="font-size:18px;color:#000">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:18px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:18px; ">' . $this->setting->currency . ' ' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . '</td></tr>';
+           $ticket .= '<tr><td style="text-align:left; width:180px; font-size:18px;">' . $posale->name . '<br><span style="font-size:18px;color:#000; font-family: sans-serif;">'.$posale->options.'</span></td><td style="text-align:center; width:50px; font-size:18px;">' . $posale->qt . '</td><td style="text-align:right; width:70px;font-size:18px; ">' . $this->setting->currency . ' ' . number_format((float)($posale->qt * $posale->price), $this->setting->decimals, '.', '') . '</td></tr>';
            $i ++;
       }
      
